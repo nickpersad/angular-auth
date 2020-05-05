@@ -4,9 +4,9 @@
       Password: test
   </div>
   <div class="card">
-      <h4 class="card-header">Angular 9 JWT Login Example</h4>
+      <h4 class="card-header">Angular Auth</h4>
       <div class="card-body">
-          <form (ngSubmit)="onSubmit()">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
               <div class="form-group">
                   <label for="username">Username</label>
                   <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
