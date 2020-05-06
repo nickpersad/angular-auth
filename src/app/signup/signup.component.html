@@ -4,7 +4,7 @@
       Password: test
   </div> -->
   <div class="card">
-    <h4 class="card-header">Angular Auth</h4>
+    <h4 class="card-header">Signup for Angular Auth</h4>
     <div class="card-body">
       <form [formGroup]="loginForm">
         <div class="form-group">
@@ -17,19 +17,29 @@
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+          <input type="password" minlength="8" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
           />
           <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
             <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password should be more than 8 characters.</div>
           </div>
         </div>
-        <button [disabled]="loading" class="btn btn-outline-primary btn-block" (click)="onSubmit()">
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" minlength="8" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"
+          />
+          <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+            <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+            <div *ngIf="f.confirmPassword.errors.confirmedValidator">Password and Confirm Password must be match.</div>
+          </div>
+        </div>
+        <button [disabled]="loading" class="btn btn-primary btn-block" (click)="onSubmit()">
           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-          Login
+          Signup
         </button>
         <div class="m-2 text-center">or</div>
-        <button [disabled]="loading" class="btn btn-primary btn-block" (click)="signup()">
-          Signup
+        <button [disabled]="loading" class="btn btn-outline-primary btn-block" (click)="goback()">
+          Go back
         </button>
         <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
       </form>
