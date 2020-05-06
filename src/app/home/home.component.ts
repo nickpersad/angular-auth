@@ -15,7 +15,10 @@ export class HomeComponent {
         this.loading = true;
         this.userService.getAll().pipe(first()).subscribe(users => {
             this.loading = false;
-            this.users = users;
+
+            if (users.success) {
+              this.users = users.results;
+            }
         });
     }
 }
