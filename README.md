@@ -2,7 +2,7 @@
 
 ---
 
-A Node.js app for basic authentication using MongoDB.
+Angular 9 app with login, signup, and home screen routing. Connects to NodeJS backend with MongoDB storage. 
 
 ## Running Locally
 

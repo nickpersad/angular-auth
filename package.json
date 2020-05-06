@@ -1,6 +1,7 @@
 {
   "name": "angular-auth",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Angular app with login, signup, and home screen routing.",
   "scripts": {
     "ng": "ng",
     "start:dev": "ng serve --open",
