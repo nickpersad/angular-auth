@@ -31,6 +31,17 @@ export class AuthenticationService {
       }));
   }
 
+  signup(username: string, password: string) {
+    return this.http.post<any>(`${environment.apiEndpoint}/api/signup`, { username, password })
+      .pipe(map(user => {
+        user.username = username;
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        return user;
+      }));
+  }
+
   logout() {
     const json = JSON.parse(localStorage.currentUser);
     return this.http.post<any>(`${environment.apiEndpoint}/api/signout`, { username: json.username })
